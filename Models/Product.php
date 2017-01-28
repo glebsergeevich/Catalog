@@ -14,6 +14,7 @@
 
 namespace Modules\Catalog\Models;
 
+use Modules\Cart\Interfaces\CartItem;
 use Phact\Main\Phact;
 use Phact\Orm\Fields\CharField;
 use Phact\Orm\Fields\IntField;
@@ -73,5 +74,16 @@ class Product extends Model
         return Phact::app()->router->url('catalog:product', [
             'slug' => $this->slug
         ]);
+    }
+
+    /**
+     * Single item price
+     * @param $quantity
+     * @param $data
+     * @return mixed
+     */
+    public function getCartPrice($quantity, $data)
+    {
+        return $this->price;
     }
 }
